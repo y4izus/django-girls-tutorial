@@ -1,3 +1,4 @@
+{% load static %}
 <html>
   <head>
     <link
@@ -6,23 +7,33 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link
+      href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
     <title>Django Girls blog</title>
   </head>
   <body>
-    <div>
+    <div class="page-header">
       <h1><a href="/">Django Girls Blog</a></h1>
     </div>
 
-    <div>
-      {% for post in posts %}
-      <div>
-        <p>publicado: {{ post.published_date }}</p>
-        <h2>
-          <a href="">{{ post.title }}</a>
-        </h2>
-        <p>{{ post.text | linebreaksbr }}</p>
+    <div class="content container">
+      <div class="row">
+        <div class="col-md-8">
+          {% for post in posts %}
+          <div class="post">
+            <p>publicado: {{ post.published_date }}</p>
+            <h2>
+              <a href="">{{ post.title }}</a>
+            </h2>
+            <p>{{ post.text | linebreaksbr }}</p>
+          </div>
+          {% endfor %}
+        </div>
       </div>
-      {% endfor %}
     </div>
   </body>
 </html>
